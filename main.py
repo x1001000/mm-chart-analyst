@@ -114,6 +114,20 @@ def analyze_chart(client, image_bytes: bytes, series_info: list[tuple[str, list]
 
 def main():
     st.set_page_config(page_title="MacroMicro Chart Analyst", layout="wide")
+
+    # Custom CSS to make sidebar wider
+    st.markdown(
+        """
+        <style>
+        [data-testid="stSidebar"] {
+            min-width: 550px;
+            max-width: 650px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     st.title("MacroMicro Chart Analyst")
 
     # Initialize session state
@@ -131,23 +145,24 @@ def main():
         st.header("Chart Input")
         url = st.text_input(
             "MacroMicro Chart URL",
-            placeholder="https://www.macromicro.me/charts/444/us-mm-gspc"
+            placeholder="e.g., macromicro.me/charts/444/us-mm-gspc"
         )
 
         if st.button("Load Chart"):
             chart_id = extract_chart_id(url)
             if chart_id:
-                st.session_state.chart_id = chart_id
-                st.session_state.messages = []  # Reset chat for new chart
+                with st.spinner("Loading chart..."):
+                    st.session_state.chart_id = chart_id
+                    st.session_state.messages = []  # Reset chat for new chart
 
-                # Fetch chart data
-                data = fetch_chart_data(chart_id)
-                if data:
-                    st.session_state.series_info = get_series_info(data, chart_id)
+                    # Fetch chart data
+                    data = fetch_chart_data(chart_id)
+                    if data:
+                        st.session_state.series_info = get_series_info(data, chart_id)
 
-                # Fetch image
-                image_url = get_preview_image_url(chart_id)
-                st.session_state.image_bytes = fetch_image_bytes(image_url)
+                    # Fetch image
+                    image_url = get_preview_image_url(chart_id)
+                    st.session_state.image_bytes = fetch_image_bytes(image_url)
 
                 st.success(f"Chart {chart_id} loaded!")
             else:
