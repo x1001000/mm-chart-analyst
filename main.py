@@ -117,7 +117,7 @@ def analyze_chart(client, image_bytes: bytes, chart_data: dict, user_prompt: str
 
 
 def main():
-    st.set_page_config(page_title="MacroMicro Chart Analyst", layout="wide")
+    st.set_page_config(page_title="MacroMicro ChartView", layout="wide")
 
     # Custom CSS for responsive sidebar
     st.markdown(
@@ -143,7 +143,7 @@ def main():
         unsafe_allow_html=True
     )
 
-    st.title("MM Chart Analyst")
+    st.title("MM ChartView")
 
     # Initialize session state
     if "messages" not in st.session_state:

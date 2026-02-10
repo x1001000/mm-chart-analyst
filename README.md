@@ -1,11 +1,12 @@
-# MacroMicro Chart Analyst
+# MacroMicro ChartView
 
-A Streamlit chatbot that analyzes MacroMicro financial charts using Google's Gemini API with Google Search grounding.
+A Streamlit chatbot that views and analyzes MacroMicro financial charts using Google's Gemini API with Google Search grounding.
 
 ## Features
 
 - Load and display MacroMicro charts by URL
-- Extract chart data including series names and latest values
+- AI image understanding of chart preview
+- Chart data including chart description and series names and latest values
 - Chat interface for analyzing charts with Gemini AI
 - Google Search grounding for real-time market information
 

@@ -1,7 +1,7 @@
 [project]
-name = "mm-chart-analyst"
+name = "mm-chart-view"
 version = "0.1.0"
-description = "A Streamlit chatbot that analyzes MacroMicro financial charts using Gemini API with Google Search grounding"
+description = "A Streamlit chatbot that views and analyzes MacroMicro financial charts using Gemini API with Google Search grounding"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
